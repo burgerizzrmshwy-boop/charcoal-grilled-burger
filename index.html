@@ -1,499 +1,862 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burgerizzr Mashwi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+  <title>Charcoal-grilled burger | برغر مشوي على الفحم</title>
+  <meta name="description" content="Charcoal-grilled burger - برغر مشوي على الفحم - Fresh charcoal grilled burgers in Riyadh.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0b;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #050505;
+      border-bottom: 1px solid #d4af37;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .topbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .brand-text {
+      font-size: 18px;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d4af37;
+    }
+
+    .lang-btn,
+    .cart-btn {
+      background: #d4af37;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.8)),
+        url("images/burger-header.png") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      color: #d4af37;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: clamp(24px, 4vw, 42px);
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #ddd;
+      margin-bottom: 25px;
+    }
+
+    .gold-btn {
+      display: inline-block;
+      background: #d4af37;
+      color: #000;
+      padding: 13px 25px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #d4af37;
+      font-size: 35px;
+      margin-bottom: 35px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.35);
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .card h3 {
+      color: #fff;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      color: #aaa;
+      font-size: 14px;
+      min-height: 42px;
+    }
+
+    .price {
+      color: #d4af37;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 11px;
+      background: #d4af37;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn:hover,
+    .gold-btn:hover,
+    .cart-btn:hover,
+    .lang-btn:hover {
+      opacity: .85;
+    }
+
+    .about {
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .contact-box {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #050505;
+      border-top: 1px solid #292929;
+      color: #aaa;
+    }
+
+    /* CART */
+
+    .cart-panel {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      width: min(420px, 92%);
+      height: 100%;
+      background: #111;
+      z-index: 2000;
+      transition: .3s;
+      padding: 22px;
+      overflow-y: auto;
+      box-shadow: -5px 0 25px rgba(0,0,0,.5);
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .cart-header h2 {
+      color: #d4af37;
+    }
+
+    .close-cart {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid #292929;
+      padding: 13px 0;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+    }
+
+    .qty {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 7px;
+    }
+
+    .qty button {
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 4px;
+      background: #d4af37;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-total {
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #555;
+      font-size: 22px;
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    .whatsapp-order {
+      width: 100%;
+      margin-top: 15px;
+      padding: 14px;
+      border: none;
+      border-radius: 7px;
+      background: #25D366;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .empty-cart {
+      color: #999;
+      text-align: center;
+      padding: 30px 0;
+    }
+
+    @media (max-width: 750px) {
+      .topbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 13px;
+        font-size: 14px;
+      }
+
+      .brand-text {
+        font-size: 15px;
+      }
+
+      .hero {
+        min-height: 400px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    
+
 <header>
+  <div class="topbar">
 
-<div class="top-bar">
+    <a href="#home" class="brand">
+      <img src="images/logo.png" alt="Charcoal-grilled burger logo">
+      <span class="brand-text">Charcoal-grilled burger</span>
+    </a>
 
-    <div class="top-item">
-        📍 Riyadh, Saudi Arabia
-    </div>
+    <nav>
+      <a href="#home" data-en="HOME" data-ar="الرئيسية">HOME</a>
+      <a href="#menu" data-en="MENU" data-ar="القائمة">MENU</a>
+      <a href="#about" data-en="ABOUT" data-ar="من نحن">ABOUT</a>
+      <a href="#contact" data-en="CONTACT" data-ar="اتصل بنا">CONTACT</a>
 
-    <div class="top-item">
-        📞 +966 59 487 5938
-    </div>
+      <button class="lang-btn" onclick="toggleLanguage()">العربية</button>
 
-    <div class="top-item">
-        🕒 3:00 PM - 5:00 AM
-    </div>
-
-    <div class="social-icons">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="https://wa.me/966594875938">WhatsApp</a>
-    </div>
-<div class="header-burger">
-    <img src="images/burger-header.png" alt="Burger">
-</div>
-</div>
-
-<div class="main-header">
-
-    <div class="logo">
-    <img src="images/logo.png" alt="Logo">
-
-    <div class="logo-text">
-        <h2>BURGERIZZR</h2>
-        <h3>MASHWI</h3>
-        <p>مشوي على الفحم</p>
-    </div>
-</div>
-
-    <nav class="navbar">
-
-        <a href="#home">HOME</a>
-        <a href="#menu">MENU</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
-
+      <button class="cart-btn" onclick="openCart()">
+        🛒 <span data-en="Cart" data-ar="السلة">Cart</span>
+        (<span id="cartCount">0</span>)
+      </button>
     </nav>
 
-    <div class="header-actions">
-
-        <div class="language-switch">
-
-            <button class="lang-btn active">
-                EN
-            </button>
-
-            <button class="lang-btn">
-                العربية
-            </button>
-
-</div>
-
+  </div>
 </header>
-<section id="home" class="hero">
-<h2>Fresh Burgers Cooked on Charcoal</h2>
-  <p>Enjoy delicious burgers, zinger, fries and meals in Riyadh.</p>
 
-<a class="btn" href="https://wa.me/966594875938">
-Order on WhatsApp
-</a>
-</section>
-
-<section id="menu">
-<h2>Our Menu</h2>
-<div class="card">
-  <img src="images/beef-cheese-burger.png" alt="Beef Cheese Burger">
-
-  <h3>Beef Cheese Burger</h3>
+<main>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+
+      <h1>Charcoal-grilled burger</h1>
+
+      <h2>برغر مشوي على الفحم</h2>
+
+      <p
+        data-en="Fresh burgers grilled over real charcoal in Riyadh."
+        data-ar="برغر طازج مشوي على الفحم الحقيقي في الرياض."
+      >
+        Fresh burgers grilled over real charcoal in Riyadh.
+      </p>
+
+      <a href="#menu" class="gold-btn"
+         data-en="View Menu"
+         data-ar="شاهد القائمة">
+        View Menu
+      </a>
+
+    </div>
+  </section>
+
+
+  <section id="menu">
+
+    <h2 class="section-title"
+        data-en="Our Menu"
+        data-ar="قائمتنا">
+      Our Menu
+    </h2>
+
+    <div class="menu-grid">
+
+      <!-- 1 -->
+      <div class="card">
+        <img src="images/beef-cheese-burger.png" alt="Beef Cheese Burger">
+        <div class="card-content">
+          <h3>Beef Cheese Burger</h3>
+          <p>Juicy beef burger with melted cheese.</p>
+          <div class="price">10 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Beef Cheese Burger',10)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <img src="images/beef-cheese-burger-meal.png" alt="Beef Cheese Burger Meal">
+        <div class="card-content">
+          <h3>Beef Cheese Burger Meal</h3>
+          <p>Burger with fries and a drink.</p>
+          <div class="price">16 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Beef Cheese Burger Meal',16)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <img src="images/double-beef-cheese-burger.png" alt="Double Beef Cheese Burger">
+        <div class="card-content">
+          <h3>Double Beef Cheese Burger</h3>
+          <p>Double beef patties with cheese.</p>
+          <div class="price">14 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Double Beef Cheese Burger',14)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <img src="images/double-beef-cheese-burger-meal.png" alt="Double Beef Cheese Burger Meal">
+        <div class="card-content">
+          <h3>Double Beef Cheese Burger Meal</h3>
+          <p>Double burger with fries and drink.</p>
+          <div class="price">19 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Double Beef Cheese Burger Meal',19)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <img src="images/chicken-cheese-burger.png" alt="Chicken Cheese Burger">
+        <div class="card-content">
+          <h3>Chicken Cheese Burger</h3>
+          <p>Chicken burger with melted cheese.</p>
+          <div class="price">9 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Chicken Cheese Burger',9)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <img src="images/chicken-cheese-burger-meal.png" alt="Chicken Cheese Burger Meal">
+        <div class="card-content">
+          <h3>Chicken Cheese Burger Meal</h3>
+          <p>Chicken burger with fries and drink.</p>
+          <div class="price">15 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Chicken Cheese Burger Meal',15)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <img src="images/zinger-burger.png" alt="Zinger Burger">
+        <div class="card-content">
+          <h3>Zinger Burger</h3>
+          <p>Crispy spicy chicken burger.</p>
+          <div class="price">10 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Zinger Burger',10)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card">
+        <img src="images/zinger-burger-meal.png" alt="Zinger Burger Meal">
+        <div class="card-content">
+          <h3>Zinger Burger Meal</h3>
+          <p>Zinger burger with fries and drink.</p>
+          <div class="price">16 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Zinger Burger Meal',16)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="card">
+        <img src="images/zinger-roll.png" alt="Zinger Roll">
+        <div class="card-content">
+          <h3>Zinger Roll</h3>
+          <p>Crispy chicken roll with special sauce.</p>
+          <div class="price">11 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Zinger Roll',11)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <img src="images/regular-fries.png" alt="Regular Fries">
+        <div class="card-content">
+          <h3>Regular Fries</h3>
+          <p>Crispy golden fries.</p>
+          <div class="price">7 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Regular Fries',7)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <img src="images/cheese-fries.png" alt="Cheese Fries">
+        <div class="card-content">
+          <h3>Cheese Fries</h3>
+          <p>Crispy fries topped with cheese.</p>
+          <div class="price">9 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Cheese Fries',9)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <img src="images/onion-rings.png" alt="Onion Rings">
+        <div class="card-content">
+          <h3>Onion Rings</h3>
+          <p>Crispy golden onion rings.</p>
+          <div class="price">6 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Onion Rings',6)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <img src="images/nuggets.png" alt="Nuggets">
+        <div class="card-content">
+          <h3>Nuggets</h3>
+          <p>Crispy chicken nuggets.</p>
+          <div class="price">7 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Nuggets',7)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <img src="images/pepsi.png" alt="Pepsi">
+        <div class="card-content">
+          <h3>Pepsi</h3>
+          <p>Cold Pepsi can.</p>
+          <div class="price">2.5 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Pepsi',2.5)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <img src="images/water.png" alt="Water">
+        <div class="card-content">
+          <h3>Water</h3>
+          <p>Cold bottled water.</p>
+          <div class="price">0.50 ر.س</div>
+          <button class="add-btn" onclick="addToCart('Water',0.5)">
+            🛒 Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="about">
+    <div class="about">
+
+      <h2 class="section-title"
+          data-en="About Us"
+          data-ar="من نحن">
+        About Us
+      </h2>
+
+      <p
+        data-en="Charcoal-grilled burger brings you fresh burgers prepared with care and grilled over charcoal for an authentic smoky taste."
+        data-ar="برغر مشوي على الفحم يقدم لكم برغر طازج محضر بعناية ومشوي على الفحم لنكهة أصيلة ومميزة."
+      >
+        Charcoal-grilled burger brings you fresh burgers prepared with care and grilled over charcoal for an authentic smoky taste.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section id="contact">
+
+    <h2 class="section-title"
+        data-en="Contact Us"
+        data-ar="تواصل معنا">
+      Contact Us
+    </h2>
+
+    <div class="contact-box">
+
+      <p>📍 Riyadh, Saudi Arabia</p>
+      <p>📍 العريجة الوسطى - عائشة بنت أبي بكر</p>
+      <p>🕒 3:00 PM - 5:00 AM</p>
+
+      <br>
+
+      <a
+        class="gold-btn"
+        href="https://wa.me/966594875938"
+        target="_blank">
+        WhatsApp
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
 
-  <p class="price">10 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Beef%20Cheese%20Burger">
-    Order Now
-  </a>
-</div>
-  <div class="card">
-  <img src="images/beef-cheese-burger-meal.png" alt="Beef Cheese Burger Meal">
-
-  <h3>Beef Cheese Burger Meal</h3>
-
-  <p class="price">16 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Beef%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/double-beef-cheese-burger.png" alt="Double Beef Cheese Burger">
-
-  <h3>Double Beef Cheese Burger</h3>
-
-  <p class="price">14 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Double%20Beef%20Cheese%20Burger">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/double-beef-cheese-burger-meal.png" alt="Double Beef Cheese Burger Meal">
-
-  <h3>Double Beef Cheese Burger Meal</h3>
-
-  <p class="price">19 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Double%20Beef%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/triple-beef-cheese-burger-meal.png" alt="Triple Beef Cheese Burger Meal">
-
-  <h3>Triple Beef Cheese Burger Meal</h3>
-
-  <p class="price">24 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Triple%20Beef%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/Chicken Cheese Burger.png" alt="Chicken Cheese Burger">
-
-  <h3>Chicken Cheese Burger</h3>
-
-  <p class="price">9 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Chicken%20Cheese%20Burger">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/Chicken Cheese Burger Meal.png" alt="Chicken Cheese Burger Meal">
-  <h3>Chicken Cheese Burger Meal</h3>
-  <p class="price">15 ر.س</p>
-  </div>
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order">
-  Order Now
-  </a>
-  <div class="card">
-  <img src="images/double-chicken-cheese-burger.png" alt="Double Chicken Cheese Burger">
-
-  <h3>Double Chicken Cheese Burger</h3>
-
-  <p class="price">13 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Double%20Chicken%20Cheese%20Burger">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/double-chicken-cheese-burger-meal.png" alt="Double Chicken Cheese Burger Meal">
-
-  <h3>Double Chicken Cheese Burger Meal</h3>
-
-  <p class="price">18 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Double%20Chicken%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/triple-chicken-cheese-burger-meal.png" alt="Triple Chicken Cheese Burger Meal">
-
-  <h3>Triple Chicken Cheese Burger Meal</h3>
-
-  <p class="price">24 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Triple%20Chicken%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/fried-chicken-cheese-burger.jpg" alt="Fried Chicken Cheese Burger">
-
-  <h3>Fried Chicken Cheese Burger</h3>
-
-  <p class="price">8 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Fried%20Chicken%20Cheese%20Burger">
-    Order Now
-  </a>
-  </div>
-<div class="card">🔥 Zinger Burger</div>
-  <div class="card">
-  <img src="images/zinger-cheese-burger.png" alt="Zinger Cheese Burger">
-
-  <h3>Zinger Cheese Burger</h3>
-
-  <p class="price">10 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Zinger%20Cheese%20Burger">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/zinger-cheese-burger-meal.png" alt="Zinger Cheese Burger Meal">
-
-  <h3>Zinger Cheese Burger Meal</h3>
-
-  <p class="price">16 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Zinger%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/double-zinger-cheese-burger-meal.png" alt="Double Zinger Cheese Burger Meal">
-
-  <h3>Double Zinger Cheese Burger Meal</h3>
-
-  <p class="price">20 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Double%20Zinger%20Cheese%20Burger%20Meal">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/zinger-cheese-roll.png" alt="Zinger Cheese Roll">
-
-  <h3>Zinger Cheese Roll</h3>
-
-  <p class="price">11 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Zinger%20Cheese%20Roll">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/zinger-cheese-roll-meal.png" alt="Zinger Cheese Roll Meal">
-
-  <h3>Zinger Cheese Roll Meal</h3>
-
-  <p class="price">17 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Zinger%20Cheese%20Roll%20Meal">
-    Order Now
-  </a>
-  </div>
-<div class="card">🍟 Fries with Cheese</div>
-  <div class="card">
-  <img src="images/regular-fries.png" alt="Regular Fries">
-
-  <h3>Regular Fries</h3>
-
-  <p class="price">4 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Regular%20Fries">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/regular-fries.webp" alt="Regular Fries">
-
-  <h3>Regular Fries</h3>
-
-  <p class="price">7 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Regular%20Fries">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/cheese-fries.png" alt="Cheese Fries">
-
-  <h3>Cheese Fries</h3>
-
-  <p class="price">9 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Cheese%20Fries">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/crispy-fries.png" alt="Crispy Fries">
-
-  <h3>Crispy Fries</h3>
-
-  <p class="price">7 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Crispy%20Fries">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/crispy-cheese-fries.png" alt="Crispy Cheese Fries">
-
-  <h3>Crispy Cheese Fries</h3>
-
-  <p class="price">10 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Crispy%20Cheese%20Fries">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/potato-wedges.png" alt="Potato Wedges">
-
-  <h3>Potato Wedges</h3>
-
-  <p class="price">7 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Potato%20Wedges">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/cheese-potato-wedges.png" alt="Cheese Potato Wedges">
-
-  <h3>Cheese Potato Wedges</h3>
-
-  <p class="price">10 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Cheese%20Potato%20Wedges">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/onion-rings.png" alt="Onion Rings">
-
-  <h3>Onion Rings</h3>
-
-  <p class="price">6 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Onion%20Rings">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/Regular Nuggets.png" alt="Regular Nuggets">
-
-  <h3>Regular Nuggets</h3>
-
-  <p class="price">7 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Regular%20Nuggets">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/cheese-sauce.png" alt="Cheese Sauce">
-
-  <h3>Cheese Sauce</h3>
-
-  <p class="price">2 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Cheese%20Sauce">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/spicy-sauce.png" alt="Spicy Sauce">
-
-  <h3>Spicy Sauce</h3>
-
-  <p class="price">2 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Spicy%20Sauce">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/ranch-sauce.png" alt="Ranch Sauce">
-
-  <h3>Ranch Sauce</h3>
-
-  <p class="price">2 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Ranch%20Sauce">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/pepsi.png" alt="Pepsi">
-
-  <h3>Pepsi</h3>
-
-  <p class="price">2.5 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Pepsi">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/water.png" alt="Water">
-
-  <h3>Water</h3>
-
-  <p class="price">0.50 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Water">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/grilled-chicken-cheese-tortilla.png" alt="Grilled Chicken Cheese Tortilla">
-
-  <h3>Grilled Chicken Cheese Tortilla</h3>
-
-  <p class="price">11 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Grilled%20Chicken%20Cheese%20Tortilla">
-    Order Now
-  </a>
-  </div>
-  <div class="card">
-  <img src="images/chicken-cheese-tortilla-meal.png" alt="Chicken Cheese Tortilla Meal">
-
-  <h3>Chicken Cheese Tortilla Meal</h3>
-
-  <p class="price">17 ر.س</p>
-
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Chicken%20Cheese%20Tortilla%20Meal">
-    Order Now
-  </a>
-  </div>
-    <img src="images/Cheese Chicken Strips.png" alt="Cheese Chicken Strips">
-  <h3>Cheese Chicken Strips</h3>
-  <p class="price">9 ر.س</p>
-</div>
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order">
-  Order Now
-  </a>
-<div class="card">
-  <img src="images/Cheese Shrimp.png" alt="Cheese Shrimp">
-  <h3>Cheese Shrimp</h3>
-  <p class="price">11 ر.س</p>
-</div>
-  <a class="order-btn" href="https://wa.me/966594875938?text=I%20want%20to%20order">
-  Order Now
-  </a>
-  
-<div class="card">
-  <img src="images/kids-meal.png" alt="Kids Meal">
-
-  <h3>Kids Meal</h3>
-
-  <p class="price">13 ر.س</p>
-
-  <a class="btn" href="https://wa.me/966594875938?text=I%20want%20to%20order%20Kids%20Meal">
-    Order Now
-  </a>
-</div>
-
-</section>
-
-<section id="about">
-<h2>About Us</h2>
-
-<p>
-Burgerizzr Mashwi serves fresh charcoal grilled burgers
-with premium quality ingredients.
-</p>
-
-</section>
-
-<section id="contact">
-
-<h2>Contact</h2>
-
-<p>📍 Aisha bint Abi Bakr Rd, Al Uraija Al Wusta, Riyadh</p>
-
-<p>📞 0594875938</p>
-
-</section>
 
 <footer>
-
-© 2026 Burgerizzr Mashwi
-
+  <p>© 2026 Charcoal-grilled burger</p>
+  <p>برغر مشوي على الفحم</p>
 </footer>
 
-<script src="script.js"></script>
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+  <div class="cart-header">
+    <h2>🛒 Cart</h2>
+    <button class="close-cart" onclick="closeCart()">×</button>
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="cart-total">
+    Total: <span id="cartTotal">0.00</span> ر.س
+  </div>
+
+  <button class="whatsapp-order" onclick="sendOrder()">
+    📱 Order on WhatsApp
+  </button>
+
+</div>
+
+
+<script>
+
+  let cart = [];
+
+  function addToCart(name, price) {
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        qty: 1
+      });
+    }
+
+    updateCart();
+    openCart();
+  }
+
+
+  function changeQty(index, amount) {
+
+    cart[index].qty += amount;
+
+    if (cart[index].qty <= 0) {
+      cart.splice(index, 1);
+    }
+
+    updateCart();
+  }
+
+
+  function updateCart() {
+
+    const container = document.getElementById("cartItems");
+    const count = document.getElementById("cartCount");
+    const totalElement = document.getElementById("cartTotal");
+
+    if (cart.length === 0) {
+
+      container.innerHTML =
+        '<div class="empty-cart">Your cart is empty.</div>';
+
+      count.textContent = "0";
+      totalElement.textContent = "0.00";
+      return;
+    }
+
+    let total = 0;
+    let totalQty = 0;
+
+    container.innerHTML = "";
+
+    cart.forEach((item, index) => {
+
+      total += item.price * item.qty;
+      totalQty += item.qty;
+
+      container.innerHTML += `
+        <div class="cart-item">
+
+          <div>
+            <div class="cart-item-name">${item.name}</div>
+
+            <div class="qty">
+              <button onclick="changeQty(${index},-1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index},1)">+</button>
+            </div>
+          </div>
+
+          <strong>${(item.price * item.qty).toFixed(2)} ر.س</strong>
+
+        </div>
+      `;
+    });
+
+    count.textContent = totalQty;
+    totalElement.textContent = total.toFixed(2);
+  }
+
+
+  function openCart() {
+    document.getElementById("cartPanel").classList.add("open");
+  }
+
+
+  function closeCart() {
+    document.getElementById("cartPanel").classList.remove("open");
+  }
+
+
+  function sendOrder() {
+
+    if (cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    let message = "السلام عليكم، أريد طلب:\n\n";
+    let total = 0;
+
+    cart.forEach(item => {
+
+      const itemTotal = item.price * item.qty;
+
+      message +=
+        "🍔 " +
+        item.name +
+        " × " +
+        item.qty +
+        " = " +
+        itemTotal.toFixed(2) +
+        " SAR\n";
+
+      total += itemTotal;
+    });
+
+    message +=
+      "\n💰 الإجمالي: " +
+      total.toFixed(2) +
+      " SAR";
+
+    const whatsappNumber = "966594875938";
+
+    const url =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(message);
+
+    window.open(url, "_blank");
+  }
+
+
+  let currentLanguage = "en";
+
+  function toggleLanguage() {
+
+    currentLanguage =
+      currentLanguage === "en" ? "ar" : "en";
+
+    document.documentElement.lang = currentLanguage;
+
+    document.documentElement.dir =
+      currentLanguage === "ar" ? "rtl" : "ltr";
+
+    document.querySelector(".lang-btn").textContent =
+      currentLanguage === "en" ? "العربية" : "English";
+
+    document.querySelectorAll("[data-en]").forEach(element => {
+
+      element.textContent =
+        element.getAttribute(
+          "data-" + currentLanguage
+        );
+
+    });
+
+  }
+
+
+  updateCart();
+
+</script>
 
 </body>
-</html>
-<a href="https://wa.me/966594875938" class="whatsapp-float" target="_blank">
-💬
-</a>
+    </html>
