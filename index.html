@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+ <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0b0b"> 
+  
 <title>Charcoal-grilled burger | برغر مشوي على الفحم</title>
 
 <style>
@@ -525,6 +528,13 @@ html[dir="rtl"] .cart-panel.open{
 
 }
 </style>
+  <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script>
 </head>
 
 <body>
