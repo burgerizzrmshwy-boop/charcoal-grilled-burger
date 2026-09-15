@@ -1,352 +1,529 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charcoal-grilled burger | برغر مشوي على الفحم</title>
 
-  <title>Charcoal-grilled burger | برغر مشوي على الفحم</title>
-  <meta name="description" content="Charcoal-grilled burger - برغر مشوي على الفحم - Fresh charcoal grilled burgers in Riyadh.">
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.5;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0b;
-      color: #fff;
-      line-height: 1.6;
-    }
+button{
+  font-family:inherit;
+  cursor:pointer;
+}
 
-    header {
-      background: #050505;
-      border-bottom: 1px solid #d4af37;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#0b0b0b;
+  border-bottom:1px solid #c9a227;
+  box-shadow:0 3px 15px rgba(0,0,0,.5);
+}
 
-    .topbar {
-      max-width: 1200px;
-      margin: auto;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-    }
+.topbar{
+  max-width:1200px;
+  margin:auto;
+  min-height:75px;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #d4af37;
-      font-weight: bold;
-    }
+.logo{
+  width:65px;
+  height:65px;
+  object-fit:contain;
+  border-radius:50%;
+}
 
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 50%;
-    }
+.nav{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
 
-    .brand-text {
-      font-size: 18px;
-    }
+.nav a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
 
-    nav {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-    }
+.nav a:hover{
+  color:#d4af37;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
 
-    nav a:hover {
-      color: #d4af37;
-    }
+.lang-btn,
+.cart-btn{
+  border:1px solid #d4af37;
+  background:#111;
+  color:#d4af37;
+  padding:9px 12px;
+  border-radius:8px;
+  font-weight:bold;
+}
 
-    .lang-btn,
-    .cart-btn {
-      background: #d4af37;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      padding: 9px 13px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.cart-btn{
+  position:relative;
+}
 
-    .hero {
-      min-height: 470px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background:
-        linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.8)),
-        url("images/burger-header.png") center/cover no-repeat;
-    }
+.cart-count{
+  position:absolute;
+  top:-9px;
+  right:-8px;
+  min-width:20px;
+  height:20px;
+  padding:0 5px;
+  border-radius:20px;
+  background:#d4af37;
+  color:#000;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    .hero-content {
-      max-width: 850px;
-    }
+.hero{
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:45px 20px;
+  background:
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
+    url("images/burger-header.png") center/cover no-repeat;
+}
 
-    .hero h1 {
-      font-size: clamp(38px, 7vw, 72px);
-      color: #d4af37;
-      margin-bottom: 12px;
-    }
+.hero-content{
+  max-width:800px;
+}
 
-    .hero h2 {
-      font-size: clamp(24px, 4vw, 42px);
-      margin-bottom: 18px;
-    }
+.hero h1{
+  font-size:48px;
+  color:#d4af37;
+  margin-bottom:12px;
+}
 
-    .hero p {
-      font-size: 19px;
-      color: #ddd;
-      margin-bottom: 25px;
-    }
+.hero h2{
+  font-size:27px;
+  margin-bottom:15px;
+}
 
-    .gold-btn {
-      display: inline-block;
-      background: #d4af37;
-      color: #000;
-      padding: 13px 25px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
+.hero p{
+  color:#ddd;
+  font-size:17px;
+}
 
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+.gold{
+  color:#d4af37;
+}
 
-    .section-title {
-      text-align: center;
-      color: #d4af37;
-      font-size: 35px;
-      margin-bottom: 35px;
-    }
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:55px 18px;
+}
 
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-    }
+.section-title{
+  text-align:center;
+  margin-bottom:35px;
+}
 
-    .card {
-      background: #151515;
-      border: 1px solid #292929;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,.35);
-    }
+.section-title h2{
+  color:#d4af37;
+  font-size:34px;
+  margin-bottom:7px;
+}
 
-    .card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      background: #222;
-    }
+.section-title p{
+  color:#bbb;
+}
 
-    .card-content {
-      padding: 18px;
-    }
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
 
-    .card h3 {
-      color: #fff;
-      margin-bottom: 7px;
-    }
+.card{
+  background:#151515;
+  border:1px solid #292929;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.25s;
+  display:flex;
+  flex-direction:column;
+}
 
-    .card p {
-      color: #aaa;
-      font-size: 14px;
-      min-height: 42px;
-    }
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#d4af37;
+  box-shadow:0 8px 25px rgba(212,175,55,.15);
+}
 
-    .price {
-      color: #d4af37;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
+.card-image{
+  width:100%;
+  height:210px;
+  background:#222;
+  object-fit:cover;
+  display:block;
+}
 
-    .add-btn {
-      width: 100%;
-      padding: 11px;
-      background: #d4af37;
-      color: #000;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.card-body{
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
 
-    .add-btn:hover,
-    .gold-btn:hover,
-    .cart-btn:hover,
-    .lang-btn:hover {
-      opacity: .85;
-    }
+.card h3{
+  font-size:18px;
+  margin-bottom:7px;
+}
 
-    .about {
-      text-align: center;
-      max-width: 800px;
-    }
+.card .description{
+  color:#aaa;
+  font-size:13px;
+  min-height:38px;
+  margin-bottom:12px;
+}
 
-    .contact-box {
-      background: #151515;
-      border: 1px solid #292929;
-      border-radius: 12px;
-      padding: 25px;
-      text-align: center;
-    }
+.price{
+  color:#d4af37;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: #050505;
-      border-top: 1px solid #292929;
-      color: #aaa;
-    }
+.add-btn{
+  width:100%;
+  padding:11px;
+  border:0;
+  border-radius:8px;
+  background:#d4af37;
+  color:#000;
+  font-weight:bold;
+  font-size:14px;
+}
 
-    /* CART */
+.add-btn:hover{
+  background:#f0cf58;
+}
 
-    .cart-panel {
-      position: fixed;
-      right: -420px;
-      top: 0;
-      width: min(420px, 92%);
-      height: 100%;
-      background: #111;
-      z-index: 2000;
-      transition: .3s;
-      padding: 22px;
-      overflow-y: auto;
-      box-shadow: -5px 0 25px rgba(0,0,0,.5);
-    }
+.info{
+  background:#111;
+  border-top:1px solid #222;
+  border-bottom:1px solid #222;
+}
 
-    .cart-panel.open {
-      right: 0;
-    }
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  text-align:center;
+}
 
-    .cart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
-      padding-bottom: 15px;
-      margin-bottom: 15px;
-    }
+.info-box{
+  padding:10px;
+}
 
-    .cart-header h2 {
-      color: #d4af37;
-    }
+.info-box h3{
+  color:#d4af37;
+  margin-bottom:6px;
+}
 
-    .close-cart {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-    }
+.info-box p{
+  color:#ccc;
+}
 
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      border-bottom: 1px solid #292929;
-      padding: 13px 0;
-    }
+footer{
+  text-align:center;
+  padding:30px 15px;
+  background:#050505;
+  border-top:1px solid #222;
+  color:#999;
+}
 
-    .cart-item-name {
-      font-weight: bold;
-    }
+footer strong{
+  color:#d4af37;
+}
 
-    .qty {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 7px;
-    }
+/* CART */
+.cart-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  opacity:0;
+  visibility:hidden;
+  transition:.25s;
+  z-index:1999;
+}
 
-    .qty button {
-      width: 28px;
-      height: 28px;
-      border: none;
-      border-radius: 4px;
-      background: #d4af37;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.cart-overlay.open{
+  opacity:1;
+  visibility:visible;
+}
 
-    .cart-total {
-      margin-top: 20px;
-      padding-top: 15px;
-      border-top: 1px solid #555;
-      font-size: 22px;
-      color: #d4af37;
-      font-weight: bold;
-    }
+.cart-panel{
+  position:fixed;
+  top:0;
+  right:-430px;
+  width:min(430px,100%);
+  height:100vh;
+  background:#101010;
+  z-index:2000;
+  border-left:1px solid #d4af37;
+  transition:.3s;
+  display:flex;
+  flex-direction:column;
+}
 
-    .whatsapp-order {
-      width: 100%;
-      margin-top: 15px;
-      padding: 14px;
-      border: none;
-      border-radius: 7px;
-      background: #25D366;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.cart-panel.open{
+  right:0;
+}
 
-    .empty-cart {
-      color: #999;
-      text-align: center;
-      padding: 30px 0;
-    }
+html[dir="rtl"] .cart-panel{
+  right:auto;
+  left:-430px;
+  border-left:0;
+  border-right:1px solid #d4af37;
+}
 
-    @media (max-width: 750px) {
-      .topbar {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+html[dir="rtl"] .cart-panel.open{
+  left:0;
+}
 
-      nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 13px;
-        font-size: 14px;
-      }
+.cart-header{
+  padding:18px;
+  border-bottom:1px solid #292929;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-      .brand-text {
-        font-size: 15px;
-      }
+.cart-header h2{
+  color:#d4af37;
+}
 
-      .hero {
-        min-height: 400px;
-      }
-    }
-  </style>
+.close-cart{
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:28px;
+}
+
+.cart-items{
+  flex:1;
+  overflow-y:auto;
+  padding:15px;
+}
+
+.empty-cart{
+  text-align:center;
+  color:#999;
+  padding:50px 20px;
+}
+
+.cart-item{
+  display:flex;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #292929;
+}
+
+.cart-item-image{
+  width:65px;
+  height:65px;
+  border-radius:8px;
+  object-fit:cover;
+  background:#222;
+  flex-shrink:0;
+}
+
+.cart-item-info{
+  flex:1;
+}
+
+.cart-item-name{
+  font-weight:bold;
+  margin-bottom:4px;
+}
+
+.cart-item-price{
+  color:#d4af37;
+  font-size:13px;
+}
+
+.qty-row{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin-top:7px;
+}
+
+.qty-btn{
+  width:28px;
+  height:28px;
+  border:1px solid #d4af37;
+  background:#151515;
+  color:#d4af37;
+  border-radius:5px;
+  font-size:18px;
+}
+
+.qty-number{
+  min-width:25px;
+  text-align:center;
+}
+
+.remove-btn{
+  border:0;
+  background:none;
+  color:#888;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.cart-footer{
+  padding:16px;
+  border-top:1px solid #292929;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.total-value{
+  color:#d4af37;
+}
+
+.whatsapp-btn{
+  width:100%;
+  border:0;
+  padding:14px;
+  border-radius:9px;
+  background:#25D366;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.whatsapp-btn:hover{
+  background:#20bd5b;
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .menu-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:760px){
+  .topbar{
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .logo{
+    width:58px;
+    height:58px;
+  }
+
+  .nav{
+    order:3;
+    width:100%;
+    justify-content:center;
+    gap:15px;
+  }
+
+  .nav a{
+    font-size:12px;
+  }
+
+  .hero{
+    min-height:350px;
+  }
+
+  .hero h1{
+    font-size:34px;
+  }
+
+  .hero h2{
+    font-size:22px;
+  }
+
+  .menu-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .card-image{
+    height:165px;
+  }
+
+  .card-body{
+    padding:11px;
+  }
+
+  .card h3{
+    font-size:16px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:430px){
+  .menu-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card-image{
+    height:145px;
+  }
+
+  .card .description{
+    font-size:12px;
+  }
+
+  .price{
+    font-size:17px;
+  }
+
+  .add-btn{
+    font-size:12px;
+    padding:10px 5px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -354,495 +531,751 @@
 <header>
   <div class="topbar">
 
-    <a href="#home" class="brand">
-      <img src="images/logo.png" alt="Charcoal-grilled burger logo">
-      <span class="brand-text">Charcoal-grilled burger</span>
-    </a>
+    <img src="images/logo.png"
+         alt="Charcoal-grilled burger"
+         class="logo">
 
-    <nav>
+    <nav class="nav">
       <a href="#home" data-en="HOME" data-ar="الرئيسية">HOME</a>
       <a href="#menu" data-en="MENU" data-ar="القائمة">MENU</a>
       <a href="#about" data-en="ABOUT" data-ar="من نحن">ABOUT</a>
-      <a href="#contact" data-en="CONTACT" data-ar="اتصل بنا">CONTACT</a>
+      <a href="#contact" data-en="CONTACT" data-ar="تواصل معنا">CONTACT</a>
+    </nav>
 
+    <div class="header-actions">
       <button class="lang-btn" onclick="toggleLanguage()">العربية</button>
 
       <button class="cart-btn" onclick="openCart()">
         🛒 <span data-en="Cart" data-ar="السلة">Cart</span>
-        (<span id="cartCount">0</span>)
+        <span class="cart-count" id="cartCount">0</span>
       </button>
-    </nav>
+    </div>
 
   </div>
 </header>
 
-<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Charcoal-grilled burger</h1>
+    <h2>برغر مشوي على الفحم</h2>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
+    <p
+      data-en="Fresh burgers, grilled over real charcoal for an unforgettable taste."
+      data-ar="برغر طازج مشوي على الفحم الحقيقي لمذاق لا يُنسى."
+    >
+      Fresh burgers, grilled over real charcoal for an unforgettable taste.
+    </p>
+  </div>
+</section>
 
-      <h1>Charcoal-grilled burger</h1>
+<section class="section" id="menu">
 
-      <h2>برغر مشوي على الفحم</h2>
+  <div class="section-title">
+    <h2 data-en="Our Menu" data-ar="قائمتنا">Our Menu</h2>
+    <p
+      data-en="Choose your favorite meal and add it to your cart."
+      data-ar="اختر وجبتك المفضلة وأضفها إلى السلة."
+    >
+      Choose your favorite meal and add it to your cart.
+    </p>
+  </div>
 
-      <p
-        data-en="Fresh burgers grilled over real charcoal in Riyadh."
-        data-ar="برغر طازج مشوي على الفحم الحقيقي في الرياض."
-      >
-        Fresh burgers grilled over real charcoal in Riyadh.
-      </p>
+  <div class="menu-grid" id="menuGrid"></div>
 
-      <a href="#menu" class="gold-btn"
-         data-en="View Menu"
-         data-ar="شاهد القائمة">
-        View Menu
-      </a>
+</section>
 
-    </div>
-  </section>
+<section class="section info" id="about">
 
+  <div class="info-grid">
 
-  <section id="menu">
-
-    <h2 class="section-title"
-        data-en="Our Menu"
-        data-ar="قائمتنا">
-      Our Menu
-    </h2>
-
-    <div class="menu-grid">
-
-      <!-- 1 -->
-      <div class="card">
-        <img src="images/beef-cheese-burger.png" alt="Beef Cheese Burger">
-        <div class="card-content">
-          <h3>Beef Cheese Burger</h3>
-          <p>Juicy beef burger with melted cheese.</p>
-          <div class="price">10 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Beef Cheese Burger',10)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 2 -->
-      <div class="card">
-        <img src="images/beef-cheese-burger-meal.png" alt="Beef Cheese Burger Meal">
-        <div class="card-content">
-          <h3>Beef Cheese Burger Meal</h3>
-          <p>Burger with fries and a drink.</p>
-          <div class="price">16 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Beef Cheese Burger Meal',16)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="card">
-        <img src="images/double-beef-cheese-burger.png" alt="Double Beef Cheese Burger">
-        <div class="card-content">
-          <h3>Double Beef Cheese Burger</h3>
-          <p>Double beef patties with cheese.</p>
-          <div class="price">14 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Double Beef Cheese Burger',14)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="card">
-        <img src="images/double-beef-cheese-burger-meal.png" alt="Double Beef Cheese Burger Meal">
-        <div class="card-content">
-          <h3>Double Beef Cheese Burger Meal</h3>
-          <p>Double burger with fries and drink.</p>
-          <div class="price">19 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Double Beef Cheese Burger Meal',19)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="card">
-        <img src="images/chicken-cheese-burger.png" alt="Chicken Cheese Burger">
-        <div class="card-content">
-          <h3>Chicken Cheese Burger</h3>
-          <p>Chicken burger with melted cheese.</p>
-          <div class="price">9 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Chicken Cheese Burger',9)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 6 -->
-      <div class="card">
-        <img src="images/chicken-cheese-burger-meal.png" alt="Chicken Cheese Burger Meal">
-        <div class="card-content">
-          <h3>Chicken Cheese Burger Meal</h3>
-          <p>Chicken burger with fries and drink.</p>
-          <div class="price">15 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Chicken Cheese Burger Meal',15)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 7 -->
-      <div class="card">
-        <img src="images/zinger-burger.png" alt="Zinger Burger">
-        <div class="card-content">
-          <h3>Zinger Burger</h3>
-          <p>Crispy spicy chicken burger.</p>
-          <div class="price">10 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Zinger Burger',10)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 8 -->
-      <div class="card">
-        <img src="images/zinger-burger-meal.png" alt="Zinger Burger Meal">
-        <div class="card-content">
-          <h3>Zinger Burger Meal</h3>
-          <p>Zinger burger with fries and drink.</p>
-          <div class="price">16 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Zinger Burger Meal',16)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 9 -->
-      <div class="card">
-        <img src="images/zinger-roll.png" alt="Zinger Roll">
-        <div class="card-content">
-          <h3>Zinger Roll</h3>
-          <p>Crispy chicken roll with special sauce.</p>
-          <div class="price">11 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Zinger Roll',11)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 10 -->
-      <div class="card">
-        <img src="images/regular-fries.png" alt="Regular Fries">
-        <div class="card-content">
-          <h3>Regular Fries</h3>
-          <p>Crispy golden fries.</p>
-          <div class="price">7 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Regular Fries',7)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 11 -->
-      <div class="card">
-        <img src="images/cheese-fries.png" alt="Cheese Fries">
-        <div class="card-content">
-          <h3>Cheese Fries</h3>
-          <p>Crispy fries topped with cheese.</p>
-          <div class="price">9 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Cheese Fries',9)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 12 -->
-      <div class="card">
-        <img src="images/onion-rings.png" alt="Onion Rings">
-        <div class="card-content">
-          <h3>Onion Rings</h3>
-          <p>Crispy golden onion rings.</p>
-          <div class="price">6 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Onion Rings',6)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 13 -->
-      <div class="card">
-        <img src="images/nuggets.png" alt="Nuggets">
-        <div class="card-content">
-          <h3>Nuggets</h3>
-          <p>Crispy chicken nuggets.</p>
-          <div class="price">7 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Nuggets',7)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 14 -->
-      <div class="card">
-        <img src="images/pepsi.png" alt="Pepsi">
-        <div class="card-content">
-          <h3>Pepsi</h3>
-          <p>Cold Pepsi can.</p>
-          <div class="price">2.5 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Pepsi',2.5)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-      <!-- 15 -->
-      <div class="card">
-        <img src="images/water.png" alt="Water">
-        <div class="card-content">
-          <h3>Water</h3>
-          <p>Cold bottled water.</p>
-          <div class="price">0.50 ر.س</div>
-          <button class="add-btn" onclick="addToCart('Water',0.5)">
-            🛒 Add to Cart
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <section id="about">
-    <div class="about">
-
-      <h2 class="section-title"
-          data-en="About Us"
-          data-ar="من نحن">
-        About Us
-      </h2>
-
-      <p
-        data-en="Charcoal-grilled burger brings you fresh burgers prepared with care and grilled over charcoal for an authentic smoky taste."
-        data-ar="برغر مشوي على الفحم يقدم لكم برغر طازج محضر بعناية ومشوي على الفحم لنكهة أصيلة ومميزة."
-      >
-        Charcoal-grilled burger brings you fresh burgers prepared with care and grilled over charcoal for an authentic smoky taste.
-      </p>
-
-    </div>
-  </section>
-
-
-  <section id="contact">
-
-    <h2 class="section-title"
-        data-en="Contact Us"
-        data-ar="تواصل معنا">
-      Contact Us
-    </h2>
-
-    <div class="contact-box">
-
-      <p>📍 Riyadh, Saudi Arabia</p>
-      <p>📍 العريجة الوسطى - عائشة بنت أبي بكر</p>
-      <p>🕒 3:00 PM - 5:00 AM</p>
-
-      <br>
-
-      <a
-        class="gold-btn"
-        href="https://wa.me/966594875938"
-        target="_blank">
-        WhatsApp
-      </a>
-
+    <div class="info-box">
+      <h3 data-en="📍 Location" data-ar="📍 الموقع">📍 Location</h3>
+      <p>العريجة الوسطى - عائشة بنت أبي بكر<br>Riyadh, Saudi Arabia</p>
     </div>
 
-  </section>
+    <div class="info-box">
+      <h3 data-en="🕒 Opening Hours" data-ar="🕒 أوقات العمل">🕒 Opening Hours</h3>
+      <p>3:00 PM - 5:00 AM</p>
+    </div>
 
-</main>
+    <div class="info-box" id="contact">
+      <h3 data-en="📱 WhatsApp" data-ar="📱 واتساب">📱 WhatsApp</h3>
+      <p>+966 59 487 5938</p>
+    </div>
 
+  </div>
+
+</section>
 
 <footer>
-  <p>© 2026 Charcoal-grilled burger</p>
-  <p>برغر مشوي على الفحم</p>
+  <strong>Charcoal-grilled burger</strong><br>
+  برغر مشوي على الفحم
 </footer>
 
 
-<!-- CART -->
+<!-- CART OVERLAY -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 
+<!-- CART -->
 <div class="cart-panel" id="cartPanel">
 
   <div class="cart-header">
-    <h2>🛒 Cart</h2>
+    <h2 data-en="Your Cart" data-ar="سلة الطلب">Your Cart</h2>
     <button class="close-cart" onclick="closeCart()">×</button>
   </div>
 
-  <div id="cartItems"></div>
-
-  <div class="cart-total">
-    Total: <span id="cartTotal">0.00</span> ر.س
+  <div class="cart-items" id="cartItems">
+    <div class="empty-cart" data-en="Your cart is empty." data-ar="السلة فارغة.">
+      Your cart is empty.
+    </div>
   </div>
 
-  <button class="whatsapp-order" onclick="sendOrder()">
-    📱 Order on WhatsApp
-  </button>
+  <div class="cart-footer">
+
+    <div class="total-row">
+      <span data-en="Total" data-ar="الإجمالي">Total</span>
+      <span class="total-value" id="cartTotal">0.00 SAR</span>
+    </div>
+
+    <button class="whatsapp-btn" onclick="sendOrder()">
+      📱 <span data-en="Order on WhatsApp" data-ar="الطلب عبر واتساب">
+        Order on WhatsApp
+      </span>
+    </button>
+
+  </div>
 
 </div>
 
 
 <script>
 
-  let cart = [];
+/* =========================
+   MENU DATA
+========================= */
 
-  function addToCart(name, price) {
+const menu = [
 
-    const existing = cart.find(item => item.name === name);
+  {
+    id:1,
+    nameEn:"Beef Cheese Burger",
+    nameAr:"برجر لحم بالجبن",
+    price:10,
+    image:"images/beef-cheese-burger.png"
+  },
 
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({
-        name: name,
-        price: price,
-        qty: 1
-      });
-    }
+  {
+    id:2,
+    nameEn:"Beef Cheese Burger Meal",
+    nameAr:"وجبة برجر لحم بالجبن",
+    price:16,
+    image:"images/beef-cheese-burger-meal.png"
+  },
 
-    updateCart();
-    openCart();
+  {
+    id:3,
+    nameEn:"Double Beef Cheese Burger",
+    nameAr:"برجر لحم بالجبن دبل",
+    price:14,
+    image:"images/double-beef-cheese-burger.png"
+  },
+
+  {
+    id:4,
+    nameEn:"Double Beef Cheese Burger Meal",
+    nameAr:"وجبة برجر لحم بالجبن دبل",
+    price:19,
+    image:"images/double-beef-cheese-burger-meal.png"
+  },
+
+  {
+    id:5,
+    nameEn:"Triple Beef Cheese Burger Meal",
+    nameAr:"وجبة برجر لحم بالجبن تريبل",
+    price:24,
+    image:"images/triple-beef-cheese-burger-meal.png"
+  },
+
+  {
+    id:6,
+    nameEn:"Chicken Cheese Burger",
+    nameAr:"برجر دجاج بالجبن",
+    price:9,
+    image:"images/chicken-cheese-burger.png"
+  },
+
+  {
+    id:7,
+    nameEn:"Chicken Cheese Burger Meal",
+    nameAr:"وجبة برجر دجاج بالجبن",
+    price:15,
+    image:"images/chicken-cheese-burger-meal.png"
+  },
+
+  {
+    id:8,
+    nameEn:"Double Chicken Cheese Burger",
+    nameAr:"برجر دجاج بالجبن دبل",
+    price:13,
+    image:"images/double-chicken-cheese-burger.png"
+  },
+
+  {
+    id:9,
+    nameEn:"Double Chicken Cheese Burger Meal",
+    nameAr:"وجبة برجر دجاج بالجبن دبل",
+    price:18,
+    image:"images/double-chicken-cheese-burger-meal.png"
+  },
+
+  {
+    id:10,
+    nameEn:"Triple Chicken Cheese Burger Meal",
+    nameAr:"وجبة برجر دجاج بالجبن تريبل",
+    price:24,
+    image:"images/triple-chicken-cheese-burger-meal.png"
+  },
+
+  {
+    id:11,
+    nameEn:"Fried Chicken Cheese Burger",
+    nameAr:"برجر دجاج مقرمش بالجبن",
+    price:8,
+    image:"images/fried-chicken-cheese-burger.png"
+  },
+
+  {
+    id:12,
+    nameEn:"Zinger Burger",
+    nameAr:"برجر زنجر",
+    price:10,
+    image:"images/zinger-burger.png"
+  },
+
+  {
+    id:13,
+    nameEn:"Zinger Burger Meal",
+    nameAr:"وجبة برجر زنجر",
+    price:16,
+    image:"images/zinger-burger-meal.png"
+  },
+
+  {
+    id:14,
+    nameEn:"Double Zinger Burger Meal",
+    nameAr:"وجبة برجر زنجر دبل",
+    price:20,
+    image:"images/double-zinger-burger-meal.png"
+  },
+
+  {
+    id:15,
+    nameEn:"Zinger Roll",
+    nameAr:"رول زنجر",
+    price:11,
+    image:"images/zinger-roll.png"
+  },
+
+  {
+    id:16,
+    nameEn:"Zinger Roll Meal",
+    nameAr:"وجبة رول زنجر",
+    price:17,
+    image:"images/zinger-roll-meal.png"
+  },
+
+  {
+    id:17,
+    nameEn:"Grilled Chicken Cheese Tortilla",
+    nameAr:"تورتيلا دجاج مشوي بالجبن",
+    price:11,
+    image:"images/grilled-chicken-cheese-tortilla.png"
+  },
+
+  {
+    id:18,
+    nameEn:"Grilled Chicken Cheese Tortilla Meal",
+    nameAr:"وجبة تورتيلا دجاج مشوي بالجبن",
+    price:17,
+    image:"images/grilled-chicken-cheese-tortilla-meal.png"
+  },
+
+  {
+    id:19,
+    nameEn:"Regular Fries",
+    nameAr:"بطاطس عادية",
+    price:7,
+    image:"images/regular-fries.png"
+  },
+
+  {
+    id:20,
+    nameEn:"Cheese Fries",
+    nameAr:"بطاطس بالجبن",
+    price:9,
+    image:"images/cheese-fries.png"
+  },
+
+  {
+    id:21,
+    nameEn:"Crispy Fries",
+    nameAr:"بطاطس مقرمشة",
+    price:7,
+    image:"images/crispy-fries.png"
+  },
+
+  {
+    id:22,
+    nameEn:"Crispy Cheese Fries",
+    nameAr:"بطاطس مقرمشة بالجبن",
+    price:10,
+    image:"images/crispy-cheese-fries.png"
+  },
+
+  {
+    id:23,
+    nameEn:"Wedges",
+    nameAr:"بطاطس ودجز",
+    price:7,
+    image:"images/wedges.png"
+  },
+
+  {
+    id:24,
+    nameEn:"Cheese Wedges",
+    nameAr:"ودجز بالجبن",
+    price:10,
+    image:"images/cheese-wedges.png"
+  },
+
+  {
+    id:25,
+    nameEn:"Onion Rings",
+    nameAr:"حلقات بصل",
+    price:6,
+    image:"images/onion-rings.png"
+  },
+
+  {
+    id:26,
+    nameEn:"Nuggets",
+    nameAr:"ناجتس",
+    price:7,
+    image:"images/nuggets.png"
+  },
+
+  {
+    id:27,
+    nameEn:"Sauces",
+    nameAr:"صوص",
+    price:2,
+    image:"images/sauces.png"
+  },
+
+  {
+    id:28,
+    nameEn:"Pepsi",
+    nameAr:"بيبسي",
+    price:2.5,
+    image:"images/pepsi.png"
+  },
+
+  {
+    id:29,
+    nameEn:"Water",
+    nameAr:"مياه",
+    price:0.5,
+    image:"images/water.png"
   }
 
-
-  function changeQty(index, amount) {
-
-    cart[index].qty += amount;
-
-    if (cart[index].qty <= 0) {
-      cart.splice(index, 1);
-    }
-
-    updateCart();
-  }
+];
 
 
-  function updateCart() {
+/* =========================
+   LANGUAGE
+========================= */
 
-    const container = document.getElementById("cartItems");
-    const count = document.getElementById("cartCount");
-    const totalElement = document.getElementById("cartTotal");
+let currentLanguage = "en";
 
-    if (cart.length === 0) {
 
-      container.innerHTML =
-        '<div class="empty-cart">Your cart is empty.</div>';
+/* =========================
+   CART
+========================= */
 
-      count.textContent = "0";
-      totalElement.textContent = "0.00";
-      return;
-    }
+let cart = [];
 
-    let total = 0;
-    let totalQty = 0;
 
-    container.innerHTML = "";
+/* =========================
+   DISPLAY MENU
+========================= */
 
-    cart.forEach((item, index) => {
+function renderMenu(){
 
-      total += item.price * item.qty;
-      totalQty += item.qty;
+  const menuGrid = document.getElementById("menuGrid");
 
-      container.innerHTML += `
-        <div class="cart-item">
+  menuGrid.innerHTML = "";
 
-          <div>
-            <div class="cart-item-name">${item.name}</div>
+  menu.forEach(item => {
 
-            <div class="qty">
-              <button onclick="changeQty(${index},-1)">−</button>
-              <span>${item.qty}</span>
-              <button onclick="changeQty(${index},1)">+</button>
-            </div>
+    const name =
+      currentLanguage === "ar"
+      ? item.nameAr
+      : item.nameEn;
+
+    const description =
+      currentLanguage === "ar"
+      ? "طازج ولذيذ"
+      : "Fresh and delicious";
+
+    menuGrid.innerHTML += `
+
+      <div class="card">
+
+        <img
+          class="card-image"
+          src="${item.image}"
+          alt="${name}"
+          loading="lazy"
+        >
+
+        <div class="card-body">
+
+          <h3>${name}</h3>
+
+          <div class="description">
+            ${description}
           </div>
 
-          <strong>${(item.price * item.qty).toFixed(2)} ر.س</strong>
+          <div class="price">
+            ${item.price.toFixed(2)} SAR
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart(${item.id})"
+          >
+            ${currentLanguage === "ar"
+              ? "أضف إلى السلة"
+              : "Add to Cart"}
+          </button>
 
         </div>
-      `;
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* =========================
+   ADD TO CART
+========================= */
+
+function addToCart(id){
+
+  const item = menu.find(product => product.id === id);
+
+  if(!item) return;
+
+  const existing = cart.find(product => product.id === id);
+
+  if(existing){
+
+    existing.qty += 1;
+
+  }else{
+
+    cart.push({
+      ...item,
+      qty:1
     });
 
-    count.textContent = totalQty;
-    totalElement.textContent = total.toFixed(2);
+  }
+
+  updateCart();
+
+  openCart();
+
+}
+
+
+/* =========================
+   CHANGE QUANTITY
+========================= */
+
+function changeQty(id, amount){
+
+  const item = cart.find(product => product.id === id);
+
+  if(!item) return;
+
+  item.qty += amount;
+
+  if(item.qty <= 0){
+
+    cart = cart.filter(product => product.id !== id);
+
+  }
+
+  updateCart();
+
+}
+
+
+/* =========================
+   UPDATE CART
+========================= */
+
+function updateCart(){
+
+  const cartItems = document.getElementById("cartItems");
+  const cartCount = document.getElementById("cartCount");
+  const cartTotal = document.getElementById("cartTotal");
+
+  let totalQty = 0;
+  let totalPrice = 0;
+
+  cart.forEach(item => {
+
+    totalQty += item.qty;
+    totalPrice += item.price * item.qty;
+
+  });
+
+  cartCount.textContent = totalQty;
+
+  cartTotal.textContent =
+    totalPrice.toFixed(2) + " SAR";
+
+
+  if(cart.length === 0){
+
+    cartItems.innerHTML = `
+
+      <div class="empty-cart">
+        ${
+          currentLanguage === "ar"
+          ? "السلة فارغة."
+          : "Your cart is empty."
+        }
+      </div>
+
+    `;
+
+    return;
+
   }
 
 
-  function openCart() {
-    document.getElementById("cartPanel").classList.add("open");
+  cartItems.innerHTML = "";
+
+  cart.forEach(item => {
+
+    const name =
+      currentLanguage === "ar"
+      ? item.nameAr
+      : item.nameEn;
+
+    const itemTotal =
+      item.price * item.qty;
+
+    cartItems.innerHTML += `
+
+      <div class="cart-item">
+
+        <img
+          src="${item.image}"
+          alt="${name}"
+          class="cart-item-image"
+        >
+
+        <div class="cart-item-info">
+
+          <div class="cart-item-name">
+            ${name}
+          </div>
+
+          <div class="cart-item-price">
+            ${itemTotal.toFixed(2)} SAR
+          </div>
+
+          <div class="qty-row">
+
+            <button
+              class="qty-btn"
+              onclick="changeQty(${item.id},-1)"
+            >
+              −
+            </button>
+
+            <span class="qty-number">
+              ${item.qty}
+            </span>
+
+            <button
+              class="qty-btn"
+              onclick="changeQty(${item.id},1)"
+            >
+              +
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* =========================
+   CART OPEN / CLOSE
+========================= */
+
+function openCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.add("open");
+
+  document
+    .getElementById("cartOverlay")
+    .classList.add("open");
+
+}
+
+
+function closeCart(){
+
+  document
+    .getElementById("cartPanel")
+    .classList.remove("open");
+
+  document
+    .getElementById("cartOverlay")
+    .classList.remove("open");
+
+}
+
+
+/* =========================
+   WHATSAPP ORDER
+========================= */
+
+function sendOrder(){
+
+  if(cart.length === 0){
+
+    alert(
+      currentLanguage === "ar"
+      ? "السلة فارغة."
+      : "Your cart is empty."
+    );
+
+    return;
+
   }
 
 
-  function closeCart() {
-    document.getElementById("cartPanel").classList.remove("open");
-  }
+  let message =
+    currentLanguage === "ar"
+    ? "السلام عليكم، أريد طلب:\n\n"
+    : "Hello, I would like to order:\n\n";
 
 
-  function sendOrder() {
+  let total = 0;
 
-    if (cart.length === 0) {
-      alert("Your cart is empty.");
-      return;
-    }
 
-    let message = "السلام عليكم، أريد طلب:\n\n";
-    let total = 0;
+  cart.forEach(item => {
 
-    cart.forEach(item => {
+    const name =
+      currentLanguage === "ar"
+      ? item.nameAr
+      : item.nameEn;
 
-      const itemTotal = item.price * item.qty;
-
-      message +=
-        "🍔 " +
-        item.name +
-        " × " +
-        item.qty +
-        " = " +
-        itemTotal.toFixed(2) +
-        " SAR\n";
-
-      total += itemTotal;
-    });
+    const itemTotal =
+      item.price * item.qty;
 
     message +=
-      "\n💰 الإجمالي: " +
-      total.toFixed(2) +
-      " SAR";
+      "🍔 " +
+      name +
+      " × " +
+      item.qty +
+      " = " +
+      itemTotal.toFixed(2) +
+      " SAR\n";
 
-    const whatsappNumber = "966594875938";
+    total += itemTotal;
 
-    const url =
-      "https://wa.me/" +
-      whatsappNumber +
-      "?text=" +
-      encodeURIComponent(message);
-
-    window.open(url, "_blank");
-  }
+  });
 
 
-  let currentLanguage = "en";
+  message +=
+    "\n💰 " +
+    (
+      currentLanguage === "ar"
+      ? "الإجمالي"
+      : "Total"
+    ) +
+    ": " +
+    total.toFixed(2) +
+    " SAR";
 
-  function toggleLanguage() {
 
-    currentLanguage =
-      currentLanguage === "en" ? "ar" : "en";
+  const whatsappNumber =
+    "966594875938";
 
-    document.documentElement.lang = currentLanguage;
 
-    document.documentElement.dir =
-      currentLanguage === "ar" ? "rtl" : "ltr";
+  const url =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(message);
 
-    document.querySelector(".lang-btn").textContent =
-      currentLanguage === "en" ? "العربية" : "English";
 
-    document.querySelectorAll("[data-en]").forEach(element => {
+  window.open(url,"_blank");
+
+}
+
+
+/* =========================
+   LANGUAGE TOGGLE
+========================= */
+
+function toggleLanguage(){
+
+  currentLanguage =
+    currentLanguage === "en"
+    ? "ar"
+    : "en";
+
+
+  document.documentElement.lang =
+    currentLanguage;
+
+
+  document.documentElement.dir =
+    currentLanguage === "ar"
+    ? "rtl"
+    : "ltr";
+
+
+  document.querySelector(".lang-btn").textContent =
+    currentLanguage === "en"
+    ? "العربية"
+    : "English";
+
+
+  document
+    .querySelectorAll("[data-en]")
+    .forEach(element => {
 
       element.textContent =
         element.getAttribute(
@@ -851,12 +1284,23 @@
 
     });
 
-  }
 
+  renderMenu();
 
   updateCart();
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderMenu();
+
+updateCart();
 
 </script>
 
 </body>
-    </html>
+</html>
