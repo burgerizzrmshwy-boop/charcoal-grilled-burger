@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Charcoal-grilled burger | برغر مشوي على الفحم</title>
 
 <style>
@@ -10,6 +11,10 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
@@ -134,10 +139,6 @@ header{
 .hero p{
   color:#ddd;
   font-size:17px;
-}
-
-.gold{
-  color:#d4af37;
 }
 
 .section{
@@ -271,6 +272,7 @@ footer strong{
 }
 
 /* CART */
+
 .cart-overlay{
   position:fixed;
   inset:0;
@@ -398,14 +400,6 @@ html[dir="rtl"] .cart-panel.open{
   text-align:center;
 }
 
-.remove-btn{
-  border:0;
-  background:none;
-  color:#888;
-  font-size:12px;
-  margin-top:4px;
-}
-
 .cart-footer{
   padding:16px;
   border-top:1px solid #292929;
@@ -439,13 +433,17 @@ html[dir="rtl"] .cart-panel.open{
 }
 
 /* MOBILE */
+
 @media(max-width:1000px){
+
   .menu-grid{
     grid-template-columns:repeat(3,1fr);
   }
+
 }
 
 @media(max-width:760px){
+
   .topbar{
     flex-wrap:wrap;
     justify-content:center;
@@ -499,9 +497,11 @@ html[dir="rtl"] .cart-panel.open{
   .info-grid{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:430px){
+
   .menu-grid{
     grid-template-columns:1fr 1fr;
   }
@@ -522,6 +522,7 @@ html[dir="rtl"] .cart-panel.open{
     font-size:12px;
     padding:10px 5px;
   }
+
 }
 </style>
 </head>
@@ -529,35 +530,80 @@ html[dir="rtl"] .cart-panel.open{
 <body>
 
 <header>
+
   <div class="topbar">
 
-    <img src="images/logo.png"
-         alt="Charcoal-grilled burger"
-         class="logo">
+    <img
+      src="images/logo.png"
+      alt="Charcoal-grilled burger"
+      class="logo"
+    >
 
     <nav class="nav">
-      <a href="#home" data-en="HOME" data-ar="الرئيسية">HOME</a>
-      <a href="#menu" data-en="MENU" data-ar="القائمة">MENU</a>
-      <a href="#about" data-en="ABOUT" data-ar="من نحن">ABOUT</a>
-      <a href="#contact" data-en="CONTACT" data-ar="تواصل معنا">CONTACT</a>
+
+      <a href="#home"
+         data-en="HOME"
+         data-ar="الرئيسية">HOME</a>
+
+      <a href="#menu"
+         data-en="MENU"
+         data-ar="القائمة">MENU</a>
+
+      <a href="#about"
+         data-en="ABOUT"
+         data-ar="من نحن">ABOUT</a>
+
+      <a href="#contact"
+         data-en="CONTACT"
+         data-ar="تواصل معنا">CONTACT</a>
+
     </nav>
 
     <div class="header-actions">
-      <button class="lang-btn" onclick="toggleLanguage()">العربية</button>
 
-      <button class="cart-btn" onclick="openCart()">
-        🛒 <span data-en="Cart" data-ar="السلة">Cart</span>
-        <span class="cart-count" id="cartCount">0</span>
+      <button
+        class="lang-btn"
+        onclick="toggleLanguage()">
+        العربية
       </button>
+
+      <button
+        class="cart-btn"
+        onclick="openCart()">
+
+        🛒
+        <span
+          data-en="Cart"
+          data-ar="السلة">
+          Cart
+        </span>
+
+        <span
+          class="cart-count"
+          id="cartCount">
+          0
+        </span>
+
+      </button>
+
     </div>
 
   </div>
+
 </header>
 
+
 <section class="hero" id="home">
+
   <div class="hero-content">
-    <h1>Charcoal-grilled burger</h1>
-    <h2>برغر مشوي على الفحم</h2>
+
+    <h1>
+      Charcoal-grilled burger
+    </h1>
+
+    <h2>
+      برغر مشوي على الفحم
+    </h2>
 
     <p
       data-en="Fresh burgers, grilled over real charcoal for an unforgettable taste."
@@ -565,82 +611,188 @@ html[dir="rtl"] .cart-panel.open{
     >
       Fresh burgers, grilled over real charcoal for an unforgettable taste.
     </p>
+
   </div>
+
 </section>
+
 
 <section class="section" id="menu">
 
   <div class="section-title">
-    <h2 data-en="Our Menu" data-ar="قائمتنا">Our Menu</h2>
+
+    <h2
+      data-en="Our Menu"
+      data-ar="قائمتنا">
+      Our Menu
+    </h2>
+
     <p
       data-en="Choose your favorite meal and add it to your cart."
-      data-ar="اختر وجبتك المفضلة وأضفها إلى السلة."
-    >
+      data-ar="اختر وجبتك المفضلة وأضفها إلى السلة.">
       Choose your favorite meal and add it to your cart.
     </p>
+
   </div>
 
-  <div class="menu-grid" id="menuGrid"></div>
+  <div
+    class="menu-grid"
+    id="menuGrid">
+  </div>
 
 </section>
 
-<section class="section info" id="about">
+
+<section
+  class="section info"
+  id="about">
 
   <div class="info-grid">
 
     <div class="info-box">
-      <h3 data-en="📍 Location" data-ar="📍 الموقع">📍 Location</h3>
-      <p>العريجة الوسطى - عائشة بنت أبي بكر<br>Riyadh, Saudi Arabia</p>
+
+      <h3
+        data-en="📍 Location"
+        data-ar="📍 الموقع">
+        📍 Location
+      </h3>
+
+      <p>
+        العريجة الوسطى - عائشة بنت أبي بكر<br>
+        Riyadh, Saudi Arabia
+      </p>
+
     </div>
+
 
     <div class="info-box">
-      <h3 data-en="🕒 Opening Hours" data-ar="🕒 أوقات العمل">🕒 Opening Hours</h3>
-      <p>3:00 PM - 5:00 AM</p>
+
+      <h3
+        data-en="🕒 Opening Hours"
+        data-ar="🕒 أوقات العمل">
+        🕒 Opening Hours
+      </h3>
+
+      <p>
+        3:00 PM - 5:00 AM
+      </p>
+
     </div>
 
-    <div class="info-box" id="contact">
-      <h3 data-en="📱 WhatsApp" data-ar="📱 واتساب">📱 WhatsApp</h3>
-      <p>+966 59 487 5938</p>
+
+    <div
+      class="info-box"
+      id="contact">
+
+      <h3
+        data-en="📱 WhatsApp"
+        data-ar="📱 واتساب">
+        📱 WhatsApp
+      </h3>
+
+      <p>
+        +966 59 487 5938
+      </p>
+
     </div>
 
   </div>
 
 </section>
 
+
 <footer>
-  <strong>Charcoal-grilled burger</strong><br>
+
+  <strong>
+    Charcoal-grilled burger
+  </strong>
+
+  <br>
+
   برغر مشوي على الفحم
+
 </footer>
 
 
 <!-- CART OVERLAY -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+
+<div
+  class="cart-overlay"
+  id="cartOverlay"
+  onclick="closeCart()">
+</div>
+
 
 <!-- CART -->
-<div class="cart-panel" id="cartPanel">
+
+<div
+  class="cart-panel"
+  id="cartPanel">
 
   <div class="cart-header">
-    <h2 data-en="Your Cart" data-ar="سلة الطلب">Your Cart</h2>
-    <button class="close-cart" onclick="closeCart()">×</button>
+
+    <h2
+      data-en="Your Cart"
+      data-ar="سلة الطلب">
+      Your Cart
+    </h2>
+
+    <button
+      class="close-cart"
+      onclick="closeCart()">
+      ×
+    </button>
+
   </div>
 
-  <div class="cart-items" id="cartItems">
-    <div class="empty-cart" data-en="Your cart is empty." data-ar="السلة فارغة.">
+
+  <div
+    class="cart-items"
+    id="cartItems">
+
+    <div
+      class="empty-cart"
+      data-en="Your cart is empty."
+      data-ar="السلة فارغة.">
+
       Your cart is empty.
+
     </div>
+
   </div>
+
 
   <div class="cart-footer">
 
     <div class="total-row">
-      <span data-en="Total" data-ar="الإجمالي">Total</span>
-      <span class="total-value" id="cartTotal">0.00 SAR</span>
+
+      <span
+        data-en="Total"
+        data-ar="الإجمالي">
+        Total
+      </span>
+
+      <span
+        class="total-value"
+        id="cartTotal">
+        0.00 SAR
+      </span>
+
     </div>
 
-    <button class="whatsapp-btn" onclick="sendOrder()">
-      📱 <span data-en="Order on WhatsApp" data-ar="الطلب عبر واتساب">
+
+    <button
+      class="whatsapp-btn"
+      onclick="sendOrder()">
+
+      📱
+
+      <span
+        data-en="Order on WhatsApp"
+        data-ar="الطلب عبر واتساب">
         Order on WhatsApp
       </span>
+
     </button>
 
   </div>
@@ -650,9 +802,9 @@ html[dir="rtl"] .cart-panel.open{
 
 <script>
 
-/* =========================
-   MENU DATA
-========================= */
+/* =========================================================
+   COMPLETE MENU
+========================================================= */
 
 const menu = [
 
@@ -701,7 +853,7 @@ const menu = [
     nameEn:"Chicken Cheese Burger",
     nameAr:"برجر دجاج بالجبن",
     price:9,
-    image:"images/chicken-cheese-burger.png"
+    image:"images/Chicken Cheese Burger.png"
   },
 
   {
@@ -709,7 +861,7 @@ const menu = [
     nameEn:"Chicken Cheese Burger Meal",
     nameAr:"وجبة برجر دجاج بالجبن",
     price:15,
-    image:"images/chicken-cheese-burger-meal.png"
+    image:"images/Chicken Cheese Burger Meal.png"
   },
 
   {
@@ -741,47 +893,47 @@ const menu = [
     nameEn:"Fried Chicken Cheese Burger",
     nameAr:"برجر دجاج مقرمش بالجبن",
     price:8,
-    image:"images/fried-chicken-cheese-burger.png"
+    image:"images/fried-chicken-cheese-burger.jpg"
   },
 
   {
     id:12,
-    nameEn:"Zinger Burger",
-    nameAr:"برجر زنجر",
+    nameEn:"Zinger Cheese Burger",
+    nameAr:"برجر زنجر بالجبن",
     price:10,
-    image:"images/zinger-burger.png"
+    image:"images/zinger-cheese-burger.png"
   },
 
   {
     id:13,
-    nameEn:"Zinger Burger Meal",
-    nameAr:"وجبة برجر زنجر",
+    nameEn:"Zinger Cheese Burger Meal",
+    nameAr:"وجبة برجر زنجر بالجبن",
     price:16,
-    image:"images/zinger-burger-meal.png"
+    image:"images/zinger-cheese-burger-meal.png"
   },
 
   {
     id:14,
-    nameEn:"Double Zinger Burger Meal",
-    nameAr:"وجبة برجر زنجر دبل",
+    nameEn:"Double Zinger Cheese Burger Meal",
+    nameAr:"وجبة برجر زنجر بالجبن دبل",
     price:20,
-    image:"images/double-zinger-burger-meal.png"
+    image:"images/double-zinger-cheese-burger-meal.png"
   },
 
   {
     id:15,
-    nameEn:"Zinger Roll",
-    nameAr:"رول زنجر",
+    nameEn:"Zinger Cheese Roll",
+    nameAr:"رول زنجر بالجبن",
     price:11,
-    image:"images/zinger-roll.png"
+    image:"images/zinger-cheese-roll.png"
   },
 
   {
     id:16,
-    nameEn:"Zinger Roll Meal",
-    nameAr:"وجبة رول زنجر",
+    nameEn:"Zinger Cheese Roll Meal",
+    nameAr:"وجبة رول زنجر بالجبن",
     price:17,
-    image:"images/zinger-roll-meal.png"
+    image:"images/zinger-cheese-roll-meal.png"
   },
 
   {
@@ -794,10 +946,10 @@ const menu = [
 
   {
     id:18,
-    nameEn:"Grilled Chicken Cheese Tortilla Meal",
-    nameAr:"وجبة تورتيلا دجاج مشوي بالجبن",
+    nameEn:"Chicken Cheese Tortilla Meal",
+    nameAr:"وجبة تورتيلا دجاج بالجبن",
     price:17,
-    image:"images/grilled-chicken-cheese-tortilla-meal.png"
+    image:"images/chicken-cheese-tortilla-meal.png"
   },
 
   {
@@ -834,18 +986,18 @@ const menu = [
 
   {
     id:23,
-    nameEn:"Wedges",
+    nameEn:"Potato Wedges",
     nameAr:"بطاطس ودجز",
     price:7,
-    image:"images/wedges.png"
+    image:"images/potato-wedges.png"
   },
 
   {
     id:24,
-    nameEn:"Cheese Wedges",
+    nameEn:"Cheese Potato Wedges",
     nameAr:"ودجز بالجبن",
     price:10,
-    image:"images/cheese-wedges.png"
+    image:"images/cheese-potato-wedges.png"
   },
 
   {
@@ -858,22 +1010,70 @@ const menu = [
 
   {
     id:26,
-    nameEn:"Nuggets",
-    nameAr:"ناجتس",
+    nameEn:"Regular Nuggets",
+    nameAr:"ناجتس عادي",
     price:7,
-    image:"images/nuggets.png"
+    image:"images/Regular Nuggets.png"
   },
 
   {
     id:27,
-    nameEn:"Sauces",
-    nameAr:"صوص",
-    price:2,
-    image:"images/sauces.png"
+    nameEn:"Cheese Chicken Strips",
+    nameAr:"تشيكن ستربس بالجبن",
+    price:9,
+    image:"images/Cheese Chicken Strips.png"
   },
 
   {
     id:28,
+    nameEn:"Shrimp",
+    nameAr:"روبيان",
+    price:10,
+    image:"images/shrimp.png"
+  },
+
+  {
+    id:29,
+    nameEn:"Cheese Shrimp",
+    nameAr:"روبيان بالجبن",
+    price:11,
+    image:"images/Cheese Shrimp.png"
+  },
+
+  {
+    id:30,
+    nameEn:"Kids Meal",
+    nameAr:"وجبة أطفال",
+    price:13,
+    image:"images/kids-meal.png"
+  },
+
+  {
+    id:31,
+    nameEn:"Cheese Sauce",
+    nameAr:"صوص الجبن",
+    price:2,
+    image:"images/cheese-sauce.png"
+  },
+
+  {
+    id:32,
+    nameEn:"Ranch Sauce",
+    nameAr:"صوص رانش",
+    price:2,
+    image:"images/ranch-sauce.png"
+  },
+
+  {
+    id:33,
+    nameEn:"Spicy Sauce",
+    nameAr:"صوص حار",
+    price:2,
+    image:"images/spicy-sauce.png"
+  },
+
+  {
+    id:34,
     nameEn:"Pepsi",
     nameAr:"بيبسي",
     price:2.5,
@@ -881,7 +1081,7 @@ const menu = [
   },
 
   {
-    id:29,
+    id:35,
     nameEn:"Water",
     nameAr:"مياه",
     price:0.5,
@@ -891,27 +1091,28 @@ const menu = [
 ];
 
 
-/* =========================
+/* =========================================================
    LANGUAGE
-========================= */
+========================================================= */
 
 let currentLanguage = "en";
 
 
-/* =========================
+/* =========================================================
    CART
-========================= */
+========================================================= */
 
 let cart = [];
 
 
-/* =========================
-   DISPLAY MENU
-========================= */
+/* =========================================================
+   RENDER MENU
+========================================================= */
 
 function renderMenu(){
 
-  const menuGrid = document.getElementById("menuGrid");
+  const menuGrid =
+    document.getElementById("menuGrid");
 
   menuGrid.innerHTML = "";
 
@@ -927,6 +1128,11 @@ function renderMenu(){
       ? "طازج ولذيذ"
       : "Fresh and delicious";
 
+    const buttonText =
+      currentLanguage === "ar"
+      ? "أضف إلى السلة"
+      : "Add to Cart";
+
     menuGrid.innerHTML += `
 
       <div class="card">
@@ -940,7 +1146,9 @@ function renderMenu(){
 
         <div class="card-body">
 
-          <h3>${name}</h3>
+          <h3>
+            ${name}
+          </h3>
 
           <div class="description">
             ${description}
@@ -952,11 +1160,10 @@ function renderMenu(){
 
           <button
             class="add-btn"
-            onclick="addToCart(${item.id})"
-          >
-            ${currentLanguage === "ar"
-              ? "أضف إلى السلة"
-              : "Add to Cart"}
+            onclick="addToCart(${item.id})">
+
+            ${buttonText}
+
           </button>
 
         </div>
@@ -970,17 +1177,21 @@ function renderMenu(){
 }
 
 
-/* =========================
+/* =========================================================
    ADD TO CART
-========================= */
+========================================================= */
 
 function addToCart(id){
 
-  const item = menu.find(product => product.id === id);
+  const item =
+    menu.find(product => product.id === id);
 
-  if(!item) return;
+  if(!item){
+    return;
+  }
 
-  const existing = cart.find(product => product.id === id);
+  const existing =
+    cart.find(product => product.id === id);
 
   if(existing){
 
@@ -1002,21 +1213,25 @@ function addToCart(id){
 }
 
 
-/* =========================
+/* =========================================================
    CHANGE QUANTITY
-========================= */
+========================================================= */
 
-function changeQty(id, amount){
+function changeQty(id,amount){
 
-  const item = cart.find(product => product.id === id);
+  const item =
+    cart.find(product => product.id === id);
 
-  if(!item) return;
+  if(!item){
+    return;
+  }
 
   item.qty += amount;
 
   if(item.qty <= 0){
 
-    cart = cart.filter(product => product.id !== id);
+    cart =
+      cart.filter(product => product.id !== id);
 
   }
 
@@ -1025,27 +1240,38 @@ function changeQty(id, amount){
 }
 
 
-/* =========================
+/* =========================================================
    UPDATE CART
-========================= */
+========================================================= */
 
 function updateCart(){
 
-  const cartItems = document.getElementById("cartItems");
-  const cartCount = document.getElementById("cartCount");
-  const cartTotal = document.getElementById("cartTotal");
+  const cartItems =
+    document.getElementById("cartItems");
+
+  const cartCount =
+    document.getElementById("cartCount");
+
+  const cartTotal =
+    document.getElementById("cartTotal");
 
   let totalQty = 0;
   let totalPrice = 0;
 
+
   cart.forEach(item => {
 
     totalQty += item.qty;
-    totalPrice += item.price * item.qty;
+
+    totalPrice +=
+      item.price * item.qty;
 
   });
 
-  cartCount.textContent = totalQty;
+
+  cartCount.textContent =
+    totalQty;
+
 
   cartTotal.textContent =
     totalPrice.toFixed(2) + " SAR";
@@ -1056,11 +1282,13 @@ function updateCart(){
     cartItems.innerHTML = `
 
       <div class="empty-cart">
+
         ${
           currentLanguage === "ar"
           ? "السلة فارغة."
           : "Your cart is empty."
         }
+
       </div>
 
     `;
@@ -1072,6 +1300,7 @@ function updateCart(){
 
   cartItems.innerHTML = "";
 
+
   cart.forEach(item => {
 
     const name =
@@ -1081,6 +1310,7 @@ function updateCart(){
 
     const itemTotal =
       item.price * item.qty;
+
 
     cartItems.innerHTML += `
 
@@ -1106,8 +1336,7 @@ function updateCart(){
 
             <button
               class="qty-btn"
-              onclick="changeQty(${item.id},-1)"
-            >
+              onclick="changeQty(${item.id},-1)">
               −
             </button>
 
@@ -1117,8 +1346,7 @@ function updateCart(){
 
             <button
               class="qty-btn"
-              onclick="changeQty(${item.id},1)"
-            >
+              onclick="changeQty(${item.id},1)">
               +
             </button>
 
@@ -1135,9 +1363,9 @@ function updateCart(){
 }
 
 
-/* =========================
-   CART OPEN / CLOSE
-========================= */
+/* =========================================================
+   OPEN CART
+========================================================= */
 
 function openCart(){
 
@@ -1152,6 +1380,10 @@ function openCart(){
 }
 
 
+/* =========================================================
+   CLOSE CART
+========================================================= */
+
 function closeCart(){
 
   document
@@ -1165,9 +1397,9 @@ function closeCart(){
 }
 
 
-/* =========================
+/* =========================================================
    WHATSAPP ORDER
-========================= */
+========================================================= */
 
 function sendOrder(){
 
@@ -1203,6 +1435,7 @@ function sendOrder(){
     const itemTotal =
       item.price * item.qty;
 
+
     message +=
       "🍔 " +
       name +
@@ -1211,6 +1444,7 @@ function sendOrder(){
       " = " +
       itemTotal.toFixed(2) +
       " SAR\n";
+
 
     total += itemTotal;
 
@@ -1240,14 +1474,17 @@ function sendOrder(){
     encodeURIComponent(message);
 
 
-  window.open(url,"_blank");
+  window.open(
+    url,
+    "_blank"
+  );
 
 }
 
 
-/* =========================
+/* =========================================================
    LANGUAGE TOGGLE
-========================= */
+========================================================= */
 
 function toggleLanguage(){
 
@@ -1292,9 +1529,9 @@ function toggleLanguage(){
 }
 
 
-/* =========================
+/* =========================================================
    START
-========================= */
+========================================================= */
 
 renderMenu();
 
