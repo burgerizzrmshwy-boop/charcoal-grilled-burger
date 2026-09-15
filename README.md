@@ -1,2 +1,1 @@
-# Main
-Official website of Burgerizer Mashwi – Charcoal Grilled Burgers in Riyadh, Saudi Arabia.
+https://charcoalgrilledburger.github.io/charcoal-grilled-burger/
