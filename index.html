@@ -1689,7 +1689,29 @@ function toggleLanguage(){
   updateCart();
 
 }
+function shareWebsite(){
 
+  if(navigator.share){
+
+    navigator.share({
+      title: "Charcoal Grilled Burger",
+      text: "🍔 Charcoal Grilled Burger | برغر مشوي على الفحم",
+      url: window.location.href
+    });
+
+  }else{
+
+    navigator.clipboard.writeText(window.location.href);
+
+    alert(
+      currentLanguage === "ar"
+      ? "🔗 تم نسخ رابط الموقع"
+      : "🔗 Website link copied"
+    );
+
+  }
+
+}
 let deferredPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (event) => {
