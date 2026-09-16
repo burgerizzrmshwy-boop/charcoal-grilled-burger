@@ -1548,9 +1548,9 @@ function toggleLanguage(){
 
 }
 
-let deferredPrompt;
+let deferredPrompt = null;
 
-window.addEventListener("beforeinstallprompt", event => {
+window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredPrompt = event;
 });
@@ -1561,21 +1561,27 @@ document.getElementById("installBtn").addEventListener("click", async () => {
 
     deferredPrompt.prompt();
 
-    await deferredPrompt.userChoice;
+    const { outcome } = await deferredPrompt.userChoice;
 
-    deferredPrompt = null;
+    if (outcome === "accepted") {
+      deferredPrompt = null;
+    }
 
   } else {
 
     alert(
       currentLanguage === "ar"
-      ? "يمكنك تثبيت الموقع من قائمة المتصفح ثم اختيار إضافة إلى الشاشة الرئيسية."
-      : "You can install this app from your browser menu and choose Add to Home Screen."
+      ? "افتح قائمة المتصفح ثم اختر تثبيت التطبيق أو إضافة إلى الشاشة الرئيسية."
+      : "Open your browser menu and choose Install App or Add to Home Screen."
     );
 
   }
 
-}); 
+});
+
+window.addEventListener("appinstalled", () => {
+  deferredPrompt = null;
+});
 
 /* =========================================================
    START
