@@ -601,7 +601,11 @@ if ("serviceWorker" in navigator) {
   </div>
 
 </header>
-
+<div id="installApp" style="display:block;text-align:center;padding:10px;background:#111;border-bottom:1px solid #c9a227;">
+  <button id="installBtn" style="background:#d4af37;color:#000;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;">
+    📱 Install App
+  </button>
+</div>
 
 <section class="hero" id="home">
 
@@ -1544,6 +1548,34 @@ function toggleLanguage(){
 
 }
 
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredPrompt = event;
+});
+
+document.getElementById("installBtn").addEventListener("click", async () => {
+
+  if (deferredPrompt) {
+
+    deferredPrompt.prompt();
+
+    await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+  } else {
+
+    alert(
+      currentLanguage === "ar"
+      ? "يمكنك تثبيت الموقع من قائمة المتصفح ثم اختيار إضافة إلى الشاشة الرئيسية."
+      : "You can install this app from your browser menu and choose Add to Home Screen."
+    );
+
+  }
+
+}); 
 
 /* =========================================================
    START
