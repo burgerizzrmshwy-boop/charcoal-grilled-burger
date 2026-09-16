@@ -435,28 +435,70 @@ html[dir="rtl"] .cart-panel.open{
   background:#20bd5b;
 }
 
-.install-app-bar{
-  text-align:center;
-  padding:12px 15px;
-  background:linear-gradient(90deg,#0b0b0b,#151515,#0b0b0b);
-  border-bottom:1px solid #c9a227;
+.install-app-content{
+  max-width:900px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+}
+
+.install-app-text{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  text-align:start;
+}
+
+.install-app-text strong{
+  color:#d4af37;
+  font-size:16px;
+}
+
+.install-app-text span{
+  color:#aaa;
+  font-size:12px;
 }
 
 .install-btn{
   background:#d4af37;
   color:#000;
-  border:1px solid #d4af37;
-  padding:11px 24px;
+  border:0;
+  padding:11px 20px;
   border-radius:9px;
   font-weight:bold;
-  font-size:15px;
-  box-shadow:0 4px 15px rgba(212,175,55,.18);
+  font-size:13px;
+  box-shadow:0 4px 15px rgba(212,175,55,.20);
   transition:.25s;
+  white-space:nowrap;
 }
 
 .install-btn:hover{
   background:#f0cf58;
   transform:translateY(-1px);
+}
+
+@media(max-width:600px){
+
+  .install-app-content{
+    gap:10px;
+  }
+
+  .install-app-text strong{
+    font-size:14px;
+  }
+
+  .install-app-text span{
+    font-size:11px;
+  }
+
+  .install-btn{
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+}
 }
  
 /* MOBILE */
@@ -626,9 +668,31 @@ if ("serviceWorker" in navigator) {
 
 </header>
 <div id="installApp" class="install-app-bar">
-  <button id="installBtn" class="install-btn">
-    📱 Install App
-  </button>
+  <div class="install-app-content">
+
+    <div class="install-app-text">
+      <strong
+        data-en="📱 Install our App"
+        data-ar="📱 ثبّت تطبيقنا">
+        📱 Install our App
+      </strong>
+
+      <span
+        data-en="Fast access • Works offline • Add to Home Screen"
+        data-ar="وصول سريع • يعمل بدون إنترنت • أضفه إلى الشاشة الرئيسية">
+        Fast access • Works offline • Add to Home Screen
+      </span>
+    </div>
+
+    <button
+      id="installBtn"
+      class="install-btn"
+      data-en="INSTALL APP"
+      data-ar="تثبيت التطبيق">
+      INSTALL APP
+    </button>
+
+  </div>
 </div>
 
 <section class="hero" id="home">
