@@ -435,6 +435,30 @@ html[dir="rtl"] .cart-panel.open{
   background:#20bd5b;
 }
 
+.install-app-bar{
+  text-align:center;
+  padding:12px 15px;
+  background:linear-gradient(90deg,#0b0b0b,#151515,#0b0b0b);
+  border-bottom:1px solid #c9a227;
+}
+
+.install-btn{
+  background:#d4af37;
+  color:#000;
+  border:1px solid #d4af37;
+  padding:11px 24px;
+  border-radius:9px;
+  font-weight:bold;
+  font-size:15px;
+  box-shadow:0 4px 15px rgba(212,175,55,.18);
+  transition:.25s;
+}
+
+.install-btn:hover{
+  background:#f0cf58;
+  transform:translateY(-1px);
+}
+ 
 /* MOBILE */
 
 @media(max-width:1000px){
@@ -601,8 +625,8 @@ if ("serviceWorker" in navigator) {
   </div>
 
 </header>
-<div id="installApp" style="display:block;text-align:center;padding:10px;background:#111;border-bottom:1px solid #c9a227;">
-  <button id="installBtn" style="background:#d4af37;color:#000;border:0;padding:10px 20px;border-radius:8px;font-weight:bold;">
+<div id="installApp" class="install-app-bar">
+  <button id="installBtn" class="install-btn">
     📱 Install App
   </button>
 </div>
